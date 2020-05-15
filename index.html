@@ -100,7 +100,6 @@
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 <script>
     var socket = io();
-    console.log(socket)
     socket.on('audioMessage', function (audioChunks) {
         const audioBlob = new Blob(audioChunks);
         const audioUrl = URL.createObjectURL(audioBlob);
