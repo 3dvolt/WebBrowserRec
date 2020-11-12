@@ -4,6 +4,15 @@ const express = require('express');
 const socketio = require('socket.io');
 const formatMessage = require('./utils/messages');
 
+let accounts = [
+  {
+    "id": 1,
+    "username": "paulhal",
+    "password": "admin",
+    "channel" : "1234",
+  }
+];
+
 const {
   userJoin,
   getCurrentUser,
@@ -56,6 +65,14 @@ io.on('connection', socket => {
     });
 });
 
-const PORT = process.env.PORT || 80;
+app.get('/ptt', function (req, res) {
+  res.sendFile(path.join(__dirname, 'public/ptt.html'));
+});
+
+app.get('/manage', function (req, res) {
+  res.sendFile(path.join(__dirname, 'public/manage.html'));
+});
+
+const PORT = process.env.PORT || 9999;
 
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
